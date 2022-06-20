@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Previsão do Tempo</title>
+        <style>
+           /*CSS Reset*/
+           html,
+            body,
+            p,
+            ol,
+            ul,
+            li,
+            dl,
+            dt,
+            dd,
+            blockquote,
+            figure,
+            fieldset,
+            legend,
+            textarea,
+            pre,
+            iframe,
+            hr,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+            margin: 0;
+            padding: 0;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+            font-size: 100%;
+            font-weight: normal;
+            }
+
+            ul {
+            list-style: none;
+            }
+
+            button,
+            input,
+            select {
+            margin: 0;
+            }
+
+            html {
+            box-sizing: border-box;
+            }
+
+            *, *::before, *::after {
+            box-sizing: inherit;
+            }
+
+            img,
+            video {
+            height: auto;
+            max-width: 100%;
+            }
+
+            iframe {
+            border: 0;
+            }
+
+            table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            }
+
+            td,
+            th {
+            padding: 0;
+            }
+
+            /*Formatação Visual da Página*/
+
+            body{
+                padding: 5px; 
+                background: top;
+                background-repeat: no-repeat;
+                background-image: url(Blue-sky-white-clouds-nature_3840x2160.jpg);
+                background-size: 100vw;
+                background-attachment: fixed;
+            }
+
+            form{               
+               padding-top: 20px;
+            }
+
+            section{
+                display: inline;
+            }
+
+            fieldset{
+                display: inline;
+                background-color: rgba(255, 255, 255, 0.699);  
+                border-color: black;
+                border-style: solid;        
+                border-radius: 10px;
+                padding-top: 5px;
+                padding-left: 2px;
+                padding-right: 2px;
+                padding-bottom: 5px;
+            }
+
+            .clCidade{
+                display: block;
+                text-align: center;
+                padding-right: 5px;
+                padding-left: 5px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <section>
+                <fieldset>
+                    <div>
+                        <label class="clCidade" for="idNomeCidade">Selecione a uma Capital</label>
+                        <select class="clCidade"  name="nmMoedas" id="idMoedas">
+                            <option value="EUR">Euro</option>
+                            <option value="GBP">Libra Esterlina</option>
+                            <option value="USD">Dólar Americano</option>
+                            <option value="CAD">Dólar Candense</option>
+                            <option value="AUD">Dólar Australiano</option>
+                            <option value="CHF">Franco Suíço</option>
+                            <option value="DKK">Coroa Dinamarquesa</option>
+                            <option value="JPY">Iene</option>
+                            <option value="NOK">Coroa Norueguesa</option>
+                            <option value="SEK">Coroa Sueca</option>
+                        </select>
+                        <div id="idBtChecar"></div>
+                    </div>
+                </fieldset>
+            </section>
+            <fieldset>
+                <div class="clDetalheHoje">
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="clOutrosDias">
+                </div>
+            </fieldset>
+        </form>
+    </body>
+</html>
