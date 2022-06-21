@@ -85,16 +85,12 @@
             /*Formatação Visual da Página*/
 
             body{
-                padding: 5px; 
+                padding: 10px; 
                 background: top;
                 background-repeat: no-repeat;
                 background-image: url(Blue-sky-white-clouds-nature_3840x2160.jpg);
                 background-size: 100vw;
                 background-attachment: fixed;
-            }
-
-            form{               
-               padding-top: 20px;
             }
 
             section{
@@ -112,12 +108,39 @@
                 padding-right: 2px;
                 padding-bottom: 5px;
             }
+            
+            select{
+                margin: 10px;
+            }
 
             .clCidade{
                 display: block;
                 text-align: center;
+                justify-content: center;
+                align-items: center;
                 padding-right: 5px;
                 padding-left: 5px;
+            }
+
+            .clOutrosDias{
+                display: block;
+            }
+
+            #idBtChecar{
+                display: inline;
+                border: 2px;
+                border-color: rgb(85, 81, 81);
+                border-style: solid;
+                border-radius: 5px;
+                margin-bottom: 5px;
+                padding: 2px;
+                display: block;
+                text-align: center;
+                justify-content: center;
+            }
+
+            #idBtChecar:hover{
+                background-color: rgba(44, 157, 255, 0.418);
             }
 
         </style>
@@ -126,21 +149,14 @@
         <form action="">
             <section>
                 <fieldset>
-                    <div>
+                    <div class="clCidades">
                         <label class="clCidade" for="idNomeCidade">Selecione a uma Capital</label>
-                        <select class="clCidade"  name="nmMoedas" id="idMoedas">
-                            <option value="EUR">Euro</option>
-                            <option value="GBP">Libra Esterlina</option>
-                            <option value="USD">Dólar Americano</option>
-                            <option value="CAD">Dólar Candense</option>
-                            <option value="AUD">Dólar Australiano</option>
-                            <option value="CHF">Franco Suíço</option>
-                            <option value="DKK">Coroa Dinamarquesa</option>
-                            <option value="JPY">Iene</option>
-                            <option value="NOK">Coroa Norueguesa</option>
-                            <option value="SEK">Coroa Sueca</option>
-                        </select>
-                        <div id="idBtChecar"></div>
+                            <div class="clCidade"> 
+                                <select name="nmMoedas" id="idMoedas">
+                                <option value="455819">Brasília</option>
+                                </select>
+                            </div>
+                        <div id="idBtChecar">Checar Previsão</div>
                     </div>
                 </fieldset>
             </section>
@@ -148,7 +164,7 @@
                 <div class="clDetalheHoje">
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset  class="clOutrosDias">
                 <div class="clOutrosDias">
                 </div>
             </fieldset>
