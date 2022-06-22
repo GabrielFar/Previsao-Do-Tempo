@@ -93,10 +93,6 @@
                 background-attachment: fixed;
             }
 
-            section{
-                display: inline;
-            }
-
             fieldset{
                 display: inline;
                 background-color: rgba(255, 255, 255, 0.699);  
@@ -129,9 +125,11 @@
                 border: 1px;
                 border-color: black;
                 border-style: solid;
+                border-radius: 5px;
                 text-align: center;
                 justify-content: center;
                 align-items: center;
+                background-color: rgba(156, 30, 30, 0.699);
             }
 
             #idOutrosDias{
@@ -139,6 +137,8 @@
                 padding: 0px;
                 justify-content: center;
                 text-align: center;
+                border: 0px;
+                background-color: transparent;
             }
 
             #idBtChecar{
@@ -162,62 +162,89 @@
     </head>
     <body>
         <form action="">
-            <section>
-                <fieldset>
-                    <div>
-                        <label class="clCidade" for="idNomeCidade">Selecione a uma Capital</label>
-                            <div class="clCidade"> 
-                                <select name="nmCidades" id="idCidades">
-                                <option value="455819">Brasília, DF</option>
-                                <option value="455904">Rio Branco, AC</option>
-                                <option value="455880">Maceió, AL</option>
-                                <option value="456030">Amapá, AP</option>
-                                <option value="455833">Manaus, AM</option>
-                                <option value="455826">Salvador, BA</option>
-                                <option value="455830">Fortaleza, CE</option>
-                                <option value="455922">Vitoria, ES</option>
-                                <option value="455831">Goiânia, GO</option>
-                                <option value="455819">São Luiz, MA</option>
-                                <option value="455829">Cuiabá, MT</option>
-                                <option value="26804347">Campo Grande, MS</option>
-                                <option value="455821">Belo Horizonte, MG</option>
-                                <option value="455820">Belém, PA</option>
-                                <option value="455872">João Pessoa, PB</option>
-                                <option value="455822">Curitiba, PR</option>
-                                <option value="455824">Recife, PE</option>
-                                <option value="455835">Terezina, PI</option>
-                                <option value="455825">Rio de Janeiro, RJ</option>
-                                <option value="455888">Natal, RN</option>
-                                <option value="455823">Porto Alegre, RS</option>
-                                <option value="455901">Porto Velho, RO</option>
-                                <option value="455819">Boa Vista, RR</option>
-                                <option value="455819">Florianópolis, SC</option>
-                                <option value="455819">São Paulo, SP</option>
-                                <option value="455819">Aracajú, SE</option>
-                                <option value="455819">Palmas, TO</option>
-                                </select>
-                            </div>
-                        <div id="idBtChecar">Checar Previsão</div>
-                    </div>
-                </fieldset>
-            </section>
+            <fieldset>
+                <div>
+                    <label class="clCidade" for="idNomeCidade">Selecione a uma Capital</label>
+                        <div class="clCidade"> 
+                            <select name="nmCidades" id="idCidades">
+                            <option value="455819">Brasília, DF</option>
+                            <option value="455904">Rio Branco, AC</option>
+                            <option value="455880">Maceió, AL</option>
+                            <option value="456030">Amapá, AP</option>
+                            <option value="455833">Manaus, AM</option>
+                            <option value="455826">Salvador, BA</option>
+                            <option value="455830">Fortaleza, CE</option>
+                            <option value="455922">Vitoria, ES</option>
+                            <option value="455831">Goiânia, GO</option>
+                            <option value="455834">São Luís, MA</option>
+                            <option value="455829">Cuiabá, MT</option>
+                            <option value="26804347">Campo Grande, MS</option>
+                            <option value="455821">Belo Horizonte, MG</option>
+                            <option value="455820">Belém, PA</option>
+                            <option value="455872">João Pessoa, PB</option>
+                            <option value="455822">Curitiba, PR</option>
+                            <option value="455824">Recife, PE</option>
+                            <option value="455835">Terezina, PI</option>
+                            <option value="455825">Rio de Janeiro, RJ</option>
+                            <option value="455888">Natal, RN</option>
+                            <option value="455823">Porto Alegre, RS</option>
+                            <option value="455901">Porto Velho, RO</option>
+                            <option value="455936">Boa Vista, RR</option>
+                            <option value="90200648">Florianópolis, SC</option>
+                            <option value="455827">São Paulo, SP</option>
+                            <option value="455839">Aracajú, SE</option>
+                            <option value="457721">Palmas, TO</option>
+                            </select>
+                        </div>
+                    <div id="idBtChecar">Checar Previsão</div>
+                </div>
+            </fieldset>
             <fieldset>
                 <div class="clDetalheHoje">
                 </div>
             </fieldset>
-            <fieldset id="idOutrosDias">
+            <div id="idOutrosDias">
                 <div id="idDia1" class="clDiasFuturos">
-                    <img src="Imagens/image-removebg-preview (4).png" alt="">
+                    <div class="clImagem">
+                        1
+                    </div>
+                    <div class="clWeekDay"></div>
+                    <div class="clTempMax"></div>
+                    <div class="clTempMin"></div>
                 </div>
                 <div id="idDia2" class="clDiasFuturos">
-                    <img src="Imagens/image-removebg-preview (5).png" alt="">
+                    <div class="clImagem">
+                        2
+                    </div>
+                    <div class="clWeekDay"></div>
+                    <div class="clTempMax"></div>
+                    <div class="clTempMin"></div>
                 </div>
                 <div id="idDia3" class="clDiasFuturos">
-                    <img src="Imagens/image-removebg-preview (6).png" alt="">
+                    <div class="clImagem">
+                        3
+                    </div>
+                    <div class="clWeekDay"></div>
+                    <div class="clTempMax"></div>
+                    <div class="clTempMin"></div>
                 </div>
-                <div id="idDia4" class="clDiasFuturos">4</div>
-                <div id="idDia5" class="clDiasFuturos">5</div>
-            </fieldset>
+                <div id="idDia4" class="clDiasFuturos">
+                    <div class="clImagem">
+                        4
+                    </div>
+                    <div class="clWeekDay"></div>
+                    <div class="clTempMax"></div>
+                    <div class="clTempMin"></div>
+                </div>
+                <div id="idDia5" class="clDiasFuturos">
+                    <div class="clImagem">
+                        5
+                    </div>
+                    <div class="clWeekDay"></div>
+                    <div class="clTempMax"></div>
+                    <div class="clTempMin"></div>
+                </div>
+            </div>
         </form>
     </body>
 </html>
