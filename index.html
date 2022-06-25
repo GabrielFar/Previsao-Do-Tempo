@@ -125,7 +125,6 @@
             }
 
             .clCidade{
-                display: block;
                 text-align: center;
                 justify-content: center;
                 align-items: center;
@@ -145,7 +144,7 @@
                 justify-content: center;
                 align-items: center;
                 background-color: rgba(255, 255, 255, 0.699);
-                width: 255px;
+                width: 250px;
             }
 
             .clDetalhes{
@@ -158,6 +157,10 @@
             .clDetalheHoje{
                 display: inline;
                 width: 300px;
+            }
+
+            .clImagem, .clWeekday, .clTempMin, .clTempMax{
+                display: block;
             }
 
             #idOutrosDias{
@@ -177,8 +180,6 @@
                 border-radius: 5px;
                 padding: 2px;
                 display: block;
-                text-align: center;
-                justify-content: center;
                 margin: 5px;
             }
 
@@ -191,9 +192,9 @@
         <form action="">
             <fieldset>
                 <div>
-                    <label class="clCidade" for="idNomeCidade">Selecione uma Capital</label>
+                    <label class="clCidade" for="idCapital">Selecione uma Capital</label>
                         <div class="clCidade"> 
-                            <select name="nmCidades" id="idCidades">
+                            <select name="nmCidades" id="idCapital">
                             <option value="455819">Brasília, DF</option>
                             <option value="455904">Rio Branco, AC</option>
                             <option value="455880">Maceió, AL</option>
@@ -227,6 +228,7 @@
                 </div>
             </fieldset>
             <fieldset class="clDetalheHoje">
+                <div class="clDetalhes" id="idImagem"><img src="Imagens/image-removebg-preview (5).png" alt=""></div>
                 <table>
                     <thead>
                         <tr>
@@ -236,20 +238,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th class="clTemps" id="idTempMin">Min: 17</th>
-                            <th class="clClima" id="idClima">Limpo</th>
+                            <th class="clTemps" id="idTempMin">Min -- °C</th>
+                            <th class="clClima" id="idClima">-----</th>
                         </tr>
                         <tr>
-                            <th class="clTemps" id="idTempMax">Max: 25</th>
-                            <th class="clClima" id="idVento">Ventos: 15 km/h</th>
+                            <th class="clTemps" id="idTempMax">Max: -- °C</th>
+                            <th class="clClima" id="idVento">Ventos: -- km/h</th>
                         </tr>
                         <tr>
-                            <th class="clTemps" id="idTemp">Agora: 20</th>
-                            <th class="clClima" id="idHumidade">Humidade: 61</th>
+                            <th class="clTemps" id="idTemp">Agora: -- °C</th>
+                            <th class="clClima" id="idHumidade">Humidade: --</th>
                         </tr>
                     </tbody>
                 </table>
-                <div class="clDetalhes" id="idImagem"></div>
                 </fieldset>
             <fieldset id="idOutrosDias">
                 <fieldset id="idDia1" class="clDiasFuturos">
@@ -287,7 +288,7 @@
         <script>
             //----------------------declaração de variáveis globais----------------------
             var capital
-            var btChevar = document.querySelector("#idBtChecar")
+            var btChecar = document.querySelector("#idBtChecar")
 
             //imagens
             var sol = '<img src="Imagens/image-removebg-preview (5).png">'
@@ -300,19 +301,19 @@
             //temperaturas
             var tempAgora = document.querySelector("#idTemp")
 
-            var tempMin = document.querySelector("idTempMin")
-            var tempMin1 = document.querySelector("idTempMin1")
-            var tempMin2 = document.querySelector("idTempMin2")
-            var tempMin3 = document.querySelector("idTempMin3")
-            var tempMin4 = document.querySelector("idTempMin4")
-            var tempMin5 = document.querySelector("idTempMin5")
+            var tempMin = document.querySelector("#idTempMin")
+            var tempMin1 = document.querySelector("#idTempMin1")
+            var tempMin2 = document.querySelector("#idTempMin2")
+            var tempMin3 = document.querySelector("#idTempMin3")
+            var tempMin4 = document.querySelector("#idTempMin4")
+            var tempMin5 = document.querySelector("#idTempMin5")
 
-            var tempMax = document.querySelector("idTempMax")
-            var tempMax1 = document.querySelector("idTempMax1")
-            var tempMax2 = document.querySelector("idTempMax2")
-            var tempMax3 = document.querySelector("idTempMax3")
-            var tempMax4 = document.querySelector("idTempMax4")
-            var tempMax5 = document.querySelector("idTempMax5")
+            var tempMax = document.querySelector("#idTempMax")
+            var tempMax1 = document.querySelector("#idTempMax1")
+            var tempMax2 = document.querySelector("#idTempMax2")
+            var tempMax3 = document.querySelector("#idTempMax3")
+            var tempMax4 = document.querySelector("#idTempMax4")
+            var tempMax5 = document.querySelector("#idTempMax5")
 
             //Outros dados metereológicos
 
@@ -327,6 +328,19 @@
             var weekDay3 = document.querySelector("#idWeekDay3")
             var weekDay4 = document.querySelector("#idWeekDay4")
             var weekDay5 = document.querySelector("#idWeekDay5")
+
+            btChecar.onclick = async function () {
+                capital = document.querySelector("#idCapital").value
+
+                let previsão = await previsãoDoTempo(capital)
+                console.log(previsão);
+            }
+
+            async function previsãoDoTempo(capital) {
+                let resposta = await fetch("https://api.hgbrasil.com/weather?woeid="+capital+"")
+                console.log(resposta);
+                return resposta.json()
+            }
         </script>
     </body>
 </html>
