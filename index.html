@@ -131,7 +131,6 @@
                 align-items: center;
                 padding: 6px;
                 margin: 5px;
-                height: 47px;
                 font-size: large;
             }
 
@@ -228,7 +227,6 @@
                 </div>
             </fieldset>
             <fieldset class="clDetalheHoje">
-                <div class="clDetalhes" id="idImagem"></div>
                 <table>
                     <thead>
                         <tr>
@@ -238,11 +236,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th class="clTemps" id="idMin">Min: 17</th>
+                            <th class="clTemps" id="idTempMin">Min: 17</th>
                             <th class="clClima" id="idClima">Limpo</th>
                         </tr>
                         <tr>
-                            <th class="clTemps" id="idMax">Max: 25</th>
+                            <th class="clTemps" id="idTempMax">Max: 25</th>
                             <th class="clClima" id="idVento">Ventos: 15 km/h</th>
                         </tr>
                         <tr>
@@ -251,6 +249,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="clDetalhes" id="idImagem"></div>
                 </fieldset>
             <fieldset id="idOutrosDias">
                 <fieldset id="idDia1" class="clDiasFuturos">
@@ -283,7 +282,51 @@
                     <div class="clTempMax" id="idTempMax5"></div>
                     <div class="clTempMin" id="idTempMin5"></div>
                 </fieldset>
-            </div>
+                </div>
         </form>
+        <script>
+            //----------------------declaração de variáveis globais----------------------
+            var capital
+            var btChevar = document.querySelector("#idBtChecar")
+
+            //imagens
+            var sol = '<img src="Imagens/image-removebg-preview (5).png">'
+            var solEntreNuvens = '<img src="Imagens/image-removebg-preview (6).png">'
+            var chuva = '<img src="Imagens/image-removebg-preview (7).png">'
+            var luaEntreNuvens = '<img src="Imagens/image-removebg-preview (8).png">'
+            var nublado = '<img src="Imagens/image-removebg-preview (9).png">'
+            var lua = '<img src="Imagens/image-removebg-preview (10).png">'
+
+            //temperaturas
+            var tempAgora = document.querySelector("#idTemp")
+
+            var tempMin = document.querySelector("idTempMin")
+            var tempMin1 = document.querySelector("idTempMin1")
+            var tempMin2 = document.querySelector("idTempMin2")
+            var tempMin3 = document.querySelector("idTempMin3")
+            var tempMin4 = document.querySelector("idTempMin4")
+            var tempMin5 = document.querySelector("idTempMin5")
+
+            var tempMax = document.querySelector("idTempMax")
+            var tempMax1 = document.querySelector("idTempMax1")
+            var tempMax2 = document.querySelector("idTempMax2")
+            var tempMax3 = document.querySelector("idTempMax3")
+            var tempMax4 = document.querySelector("idTempMax4")
+            var tempMax5 = document.querySelector("idTempMax5")
+
+            //Outros dados metereológicos
+
+            var humidade = document.querySelector("#idHumidade")
+            var vento = document.querySelector("#idVento")
+            var clima = document.querySelector("#idClima")
+
+            //WeekDay
+
+            var weekDay1 = document.querySelector("#idWeekDay1")
+            var weekDay2 = document.querySelector("#idWeekDay2")
+            var weekDay3 = document.querySelector("#idWeekDay3")
+            var weekDay4 = document.querySelector("#idWeekDay4")
+            var weekDay5 = document.querySelector("#idWeekDay5")
+        </script>
     </body>
 </html>
