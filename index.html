@@ -35,7 +35,6 @@
             }
 
             h1,
-            h2,
             h3,
             h4,
             h5,
@@ -91,6 +90,9 @@
                 background-image: url(Imagens/Blue-sky-white-clouds-nature_3840x2160.jpg);
                 background-size: 100vw;
                 background-attachment: fixed;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
             }
 
             fieldset{
@@ -107,7 +109,19 @@
             }
             
             select{
-                margin: 10px;
+                margin: 2px;
+            }
+
+            table {
+                display: inline;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                padding: 5px;  
+            }
+
+            th, tr, thead {
+                padding: 5px;
             }
 
             .clCidade{
@@ -115,8 +129,10 @@
                 text-align: center;
                 justify-content: center;
                 align-items: center;
-                padding-right: 5px;
-                padding-left: 5px;
+                padding: 6px;
+                margin: 5px;
+                height: 47px;
+                font-size: large;
             }
 
             .clDiasFuturos{
@@ -129,7 +145,20 @@
                 text-align: center;
                 justify-content: center;
                 align-items: center;
-                background-color: rgba(156, 30, 30, 0.699);
+                background-color: rgba(255, 255, 255, 0.699);
+                width: 255px;
+            }
+
+            .clDetalhes{
+                display: inline;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .clDetalheHoje{
+                display: inline;
+                width: 300px;
             }
 
             #idOutrosDias{
@@ -147,24 +176,23 @@
                 border-color: rgb(85, 81, 81);
                 border-style: solid;
                 border-radius: 5px;
-                margin-bottom: 5px;
                 padding: 2px;
                 display: block;
                 text-align: center;
                 justify-content: center;
+                margin: 5px;
             }
 
             #idBtChecar:hover{
                 background-color: rgba(44, 157, 255, 0.418);
             }
-
         </style>
     </head>
     <body>
         <form action="">
             <fieldset>
                 <div>
-                    <label class="clCidade" for="idNomeCidade">Selecione a uma Capital</label>
+                    <label class="clCidade" for="idNomeCidade">Selecione uma Capital</label>
                         <div class="clCidade"> 
                             <select name="nmCidades" id="idCidades">
                             <option value="455819">Brasília, DF</option>
@@ -199,51 +227,62 @@
                     <div id="idBtChecar">Checar Previsão</div>
                 </div>
             </fieldset>
-            <fieldset>
-                <div class="clDetalheHoje">
-                </div>
-            </fieldset>
-            <div id="idOutrosDias">
-                <div id="idDia1" class="clDiasFuturos">
-                    <div class="clImagem">
-                        1
-                    </div>
-                    <div class="clWeekDay"></div>
-                    <div class="clTempMax"></div>
-                    <div class="clTempMin"></div>
-                </div>
-                <div id="idDia2" class="clDiasFuturos">
-                    <div class="clImagem">
-                        2
-                    </div>
-                    <div class="clWeekDay"></div>
-                    <div class="clTempMax"></div>
-                    <div class="clTempMin"></div>
-                </div>
-                <div id="idDia3" class="clDiasFuturos">
-                    <div class="clImagem">
-                        3
-                    </div>
-                    <div class="clWeekDay"></div>
-                    <div class="clTempMax"></div>
-                    <div class="clTempMin"></div>
-                </div>
-                <div id="idDia4" class="clDiasFuturos">
-                    <div class="clImagem">
-                        4
-                    </div>
-                    <div class="clWeekDay"></div>
-                    <div class="clTempMax"></div>
-                    <div class="clTempMin"></div>
-                </div>
-                <div id="idDia5" class="clDiasFuturos">
-                    <div class="clImagem">
-                        5
-                    </div>
-                    <div class="clWeekDay"></div>
-                    <div class="clTempMax"></div>
-                    <div class="clTempMin"></div>
-                </div>
+            <fieldset class="clDetalheHoje">
+                <div class="clDetalhes" id="idImagem"></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="clTemps">Temperaturas</th>
+                            <th class="clClima">Clima</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="clTemps" id="idMin">Min: 17</th>
+                            <th class="clClima" id="idClima">Limpo</th>
+                        </tr>
+                        <tr>
+                            <th class="clTemps" id="idMax">Max: 25</th>
+                            <th class="clClima" id="idVento">Ventos: 15 km/h</th>
+                        </tr>
+                        <tr>
+                            <th class="clTemps" id="idTemp">Agora: 20</th>
+                            <th class="clClima" id="idHumidade">Humidade: 61</th>
+                        </tr>
+                    </tbody>
+                </table>
+                </fieldset>
+            <fieldset id="idOutrosDias">
+                <fieldset id="idDia1" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem1">1</div>
+                    <div class="clWeekDay" id="idWeekDay1"></div>
+                    <div class="clTempMax" id="idTempMax1"></div>
+                    <div class="clTempMin" id="idTempMin1"></div>
+                </fieldset>
+                <fieldset id="idDia1" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem2">2</div>
+                    <div class="clWeekDay" id="idWeekDay2"></div>
+                    <div class="clTempMax" id="idTempMax2"></div>
+                    <div class="clTempMin" id="idTempMin2"></div>
+                </fieldset>
+                <fieldset id="idDia1" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem3">3</div>
+                    <div class="clWeekDay" id="idWeekDay3"></div>
+                    <div class="clTempMax" id="idTempMax3"></div>
+                    <div class="clTempMin" id="idTempMin3"></div>
+                </fieldset>
+                <fieldset id="idDia1" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem4">4</div>
+                    <div class="clWeekDay" id="idWeekDay4"></div>
+                    <div class="clTempMax" id="idTempMax4"></div>
+                    <div class="clTempMin" id="idTempMin4"></div>
+                </fieldset>
+                <fieldset id="idDia1" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem5">5</div>
+                    <div class="clWeekDay" id="idWeekDay5"></div>
+                    <div class="clTempMax" id="idTempMax5"></div>
+                    <div class="clTempMin" id="idTempMin5"></div>
+                </fieldset>
             </div>
         </form>
     </body>
