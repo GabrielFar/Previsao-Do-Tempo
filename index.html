@@ -230,23 +230,17 @@
             <fieldset class="clDetalheHoje">
                 <div class="clDetalhes" id="idImagem"><img src="Imagens/image-removebg-preview (5).png" alt=""></div>
                 <table>
-                    <thead>
-                        <tr>
-                            <th class="clTemps">Temperaturas</th>
-                            <th class="clClima">Clima</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
-                            <th class="clTemps" id="idTempMin">Min -- °C</th>
+                            <th class="clCity" id="idCity">Cidade: -- </th>
                             <th class="clClima" id="idClima">-----</th>
                         </tr>
                         <tr>
-                            <th class="clTemps" id="idTempMax">Max: -- °C</th>
+                            <th class="clData" id="idData">Data: --/--/-- </th>
                             <th class="clClima" id="idVento">Ventos: -- km/h</th>
                         </tr>
                         <tr>
-                            <th class="clTemps" id="idTemp">Agora: -- °C</th>
+                            <th class="clTemp" id="idTemp"> -- °C</th>
                             <th class="clClima" id="idHumidade">Humidade: --</th>
                         </tr>
                     </tbody>
@@ -290,6 +284,14 @@
             var capital
             var btChecar = document.querySelector("#idBtChecar")
 
+            //Nomes de variaveis vindas da API para determinar imagem
+            //cloud
+            //cloudly_night
+            //clear_night
+            //cloudly_day
+            //clear_day
+            //rain
+
             //imagens
             var sol = '<img src="Imagens/image-removebg-preview (5).png">'
             var solEntreNuvens = '<img src="Imagens/image-removebg-preview (6).png">'
@@ -329,6 +331,13 @@
             var weekDay4 = document.querySelector("#idWeekDay4")
             var weekDay5 = document.querySelector("#idWeekDay5")
 
+            /**
+            * Rotina de Consulta
+            * Descrição: Obtenção de Dados da Tela e Consulta dos Valores em uma API de Previsão do tempo
+            * Parâmetros: none
+            * Retorno: none
+            */
+
             btChecar.onclick = async function () {
                 capital = document.querySelector("#idCapital").value
 
@@ -337,8 +346,7 @@
             }
 
             async function previsãoDoTempo(capital) {
-                let resposta = await fetch("https://api.hgbrasil.com/weather?woeid="+capital+"")
-                console.log(resposta);
+                let resposta = await fetch("https://api.hgbrasil.com/weather?format=json-cors&woeid="+capital+"")
                 return resposta.json()
             }
         </script>
