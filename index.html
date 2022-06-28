@@ -362,7 +362,7 @@
 
             /**
             * Rotina de Gerar Previsão Principal
-            * Descrição: Gera os dados que compõem a previsaõ principal e os apresenta na tela
+            * Descrição: Gera os dados que compõem a previsão principal e os apresenta na tela
             * Parâmetros: previsão, base(serve como palavra para melhorar legibilidade)
             * Retorno: none
             */
@@ -421,16 +421,55 @@
 
             function gerarPrevisõesFuturas(previsão, base) {
                 gerarPrevisãoDia1(previsão, base)
+                gerarPrevisãoDia2(previsão, base)
+                gerarPrevisãoDia3(previsão, base)
+                gerarPrevisãoDia4(previsão, base)
+                gerarPrevisãoDia5(previsão, base)
             }
 
             function gerarPrevisãoDia1(previsão, base) {
-                weekDay1.innerHTML = base.forecast[0].weekday
-                tempMax1.innerHTML = base.forecast[0].max
-                tempMin1.innerHTML = base.forecast[0].min
-
                 let indexador = 0
 
+                weekDay1.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax1.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin1.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
                 imagem1.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia2(previsão, base) {
+                let indexador = 1
+
+                weekDay2.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax2.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin2.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                imagem2.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia3(previsão, base) {
+                let indexador = 2
+
+                weekDay3.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax3.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin3.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                imagem3.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia4(previsão, base) {
+                let indexador = 3
+
+                weekDay4.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax4.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin4.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                imagem4.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia5(previsão, base) {
+                let indexador = 4
+
+                weekDay5.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax5.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin5.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                imagem5.innerHTML = determinarImagenFuturas(base, indexador)
             }
         </script>
     </body>
