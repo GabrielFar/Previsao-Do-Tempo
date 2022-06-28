@@ -228,7 +228,7 @@
                 </div>
             </fieldset>
             <fieldset class="clDetalheHoje">
-                <div class="clDetalhes" id="idImagem"><img src="Imagens/image-removebg-preview (5).png" alt=""></div>
+                <div class="clDetalhes" id="idImagem"></div>
                 <table>
                     <tbody>
                         <tr>
@@ -237,7 +237,7 @@
                         </tr>
                         <tr>
                             <th class="clData" id="idData">Data: --/--/-- </th>
-                            <th class="clClima" id="idVento">Ventos: -- km/h</th>
+                            <th class="clClima" id="idVento">Vento: -- km/h</th>
                         </tr>
                         <tr>
                             <th class="clTemp" id="idTemp"> -- °C</th>
@@ -284,14 +284,6 @@
             var capital
             var btChecar = document.querySelector("#idBtChecar")
 
-            //Nomes de variaveis vindas da API para determinar imagem
-            //cloud
-            //cloudly_night
-            //clear_night
-            //cloudly_day
-            //clear_day
-            //rain
-
             //imagens
             var sol = '<img src="Imagens/image-removebg-preview (5).png">'
             var solEntreNuvens = '<img src="Imagens/image-removebg-preview (6).png">'
@@ -300,17 +292,27 @@
             var nublado = '<img src="Imagens/image-removebg-preview (9).png">'
             var lua = '<img src="Imagens/image-removebg-preview (10).png">'
 
+            //Campo Imagens
+
+            var imagem = document.querySelector("#idImagem")
+            var imagem1 = document.querySelector("#idImagem1")
+            var imagem2 = document.querySelector("#idImagem2")
+            var imagem3 = document.querySelector("#idImagem3")
+            var imagem4 = document.querySelector("#idImagem4")
+            var imagem5 = document.querySelector("#idImagem5")
+
             //temperaturas
+
             var tempAgora = document.querySelector("#idTemp")
 
-            var tempMin = document.querySelector("#idTempMin")
+            var cidade = document.querySelector("#idCity")
             var tempMin1 = document.querySelector("#idTempMin1")
             var tempMin2 = document.querySelector("#idTempMin2")
             var tempMin3 = document.querySelector("#idTempMin3")
             var tempMin4 = document.querySelector("#idTempMin4")
             var tempMin5 = document.querySelector("#idTempMin5")
 
-            var tempMax = document.querySelector("#idTempMax")
+            var data = document.querySelector("#idData")
             var tempMax1 = document.querySelector("#idTempMax1")
             var tempMax2 = document.querySelector("#idTempMax2")
             var tempMax3 = document.querySelector("#idTempMax3")
@@ -331,23 +333,104 @@
             var weekDay4 = document.querySelector("#idWeekDay4")
             var weekDay5 = document.querySelector("#idWeekDay5")
 
+            //---------------Funções---------------
+
             /**
             * Rotina de Consulta
-            * Descrição: Obtenção de Dados da Tela e Consulta dos Valores em uma API de Previsão do tempo
+            * Descrição: Obtenção de Dados da Tela e Consulta dos Valores em API de Previsão do tempo
             * Parâmetros: none
             * Retorno: none
             */
 
-            btChecar.onclick = async function () {
+            btChecar.onclick = async function () {            
                 capital = document.querySelector("#idCapital").value
 
                 let previsão = await previsãoDoTempo(capital)
                 console.log(previsão);
+                
+                //variáveis auxiliares
+                let base = previsão.results
+
+                gerarPrevisãoPrincipal(previsão, base)
+                gerarPrevisõesFuturas(previsão, base)
             }
 
             async function previsãoDoTempo(capital) {
                 let resposta = await fetch("https://api.hgbrasil.com/weather?format=json-cors&woeid="+capital+"")
                 return resposta.json()
+            }
+
+            /**
+            * Rotina de Gerar Previsão Principal
+            * Descrição: Gera os dados que compõem a previsaõ principal e os apresenta na tela
+            * Parâmetros: previsão, base(serve como palavra para melhorar legibilidade)
+            * Retorno: none
+            */
+
+            function gerarPrevisãoPrincipal(previsão, base){
+                cidade.innerHTML = "Cidade: " + base.city_name
+                data.innerHTML = "Data: " + base.date
+                tempAgora.innerHTML = base.temp + " °C"
+                clima.innerHTML = base.description
+                vento.innerHTML = "Vento: " + base.wind_speedy
+                humidade.innerHTML = "Humidade: " + base.humidity
+
+                //selecionar imagem a ser apresentada
+
+                if (base.condition_slug == "cloud") {
+                    imagem.innerHTML = nublado
+
+                } else if (base.condition_slug == "cloudly_night") {
+                    imagem.innerHTML = luaEntreNuvens
+
+                } else if (base.condition_slug == "clear_night") {
+                    imagem.innerHTML = lua
+
+                } else if (base.condition_slug == "cloudly_day") {
+                    imagem.innerHTML = solEntreNuvens
+                    
+                } else if (base.condition_slug == "clear_day") {
+                    imagem.innerHTML = sol
+                    
+                } else if (base.condition_slug == "rain") {
+                    imagem.innerHTML = chuva
+                }
+            }
+
+            function determinarImagenFuturas(base, indexador) {
+
+                if (base.forecast[indexador].condition == "cloud") {
+                    return nublado
+
+                } else if (base.forecast[indexador].condition == "cloudly_night") {
+                    return luaEntreNuvens
+
+                } else if (base.forecast[indexador].condition == "clear_night") {
+                    return lua
+
+                } else if (base.forecast[indexador].condition == "cloudly_day") {
+                    return solEntreNuvens
+                    
+                } else if (base.forecast[indexador].condition == "clear_day") {
+                    return sol
+                    
+                } else if (base.forecast[indexador].condition == "rain") {
+                    return chuva
+                }
+            }
+
+            function gerarPrevisõesFuturas(previsão, base) {
+                gerarPrevisãoDia1(previsão, base)
+            }
+
+            function gerarPrevisãoDia1(previsão, base) {
+                weekDay1.innerHTML = base.forecast[0].weekday
+                tempMax1.innerHTML = base.forecast[0].max
+                tempMin1.innerHTML = base.forecast[0].min
+
+                let indexador = 0
+
+                imagem1.innerHTML = determinarImagenFuturas(base, indexador)
             }
         </script>
     </body>
