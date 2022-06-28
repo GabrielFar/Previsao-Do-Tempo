@@ -87,7 +87,7 @@
                 padding: 10px; 
                 background: top;
                 background-repeat: no-repeat;
-                background-image: url(Imagens/Blue-sky-white-clouds-nature_3840x2160.jpg);
+                background-image: url(Imagens/d8fec4e966067b9ce49395f4262debb4.jpg);
                 background-size: 100vw;
                 background-attachment: fixed;
                 text-align: center;
@@ -97,7 +97,7 @@
 
             fieldset{
                 display: inline;
-                background-color: rgba(255, 255, 255, 0.699);  
+                background-color: rgb(255, 255, 255);  
                 border-color: black;
                 border-style: solid;        
                 border-radius: 10px;
@@ -143,7 +143,7 @@
                 text-align: center;
                 justify-content: center;
                 align-items: center;
-                background-color: rgba(255, 255, 255, 0.699);
+                background-color: rgb(255, 255, 255);
                 width: 250px;
             }
 
@@ -248,34 +248,39 @@
                 </fieldset>
             <fieldset id="idOutrosDias">
                 <fieldset id="idDia1" class="clDiasFuturos">
-                    <div class="clImagem" id="idImagem1">1</div>
+                    <div class="clImagem" id="idImagem1"></div>
                     <div class="clWeekDay" id="idWeekDay1"></div>
                     <div class="clTempMax" id="idTempMax1"></div>
                     <div class="clTempMin" id="idTempMin1"></div>
+                    <div class="clData" id="idData1"></div>
                 </fieldset>
-                <fieldset id="idDia1" class="clDiasFuturos">
-                    <div class="clImagem" id="idImagem2">2</div>
+                <fieldset id="idDia2" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem2"></div>
                     <div class="clWeekDay" id="idWeekDay2"></div>
                     <div class="clTempMax" id="idTempMax2"></div>
                     <div class="clTempMin" id="idTempMin2"></div>
+                    <div class="clData" id="idData2"></div>
                 </fieldset>
-                <fieldset id="idDia1" class="clDiasFuturos">
-                    <div class="clImagem" id="idImagem3">3</div>
+                <fieldset id="idDia3" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem3"></div>
                     <div class="clWeekDay" id="idWeekDay3"></div>
                     <div class="clTempMax" id="idTempMax3"></div>
                     <div class="clTempMin" id="idTempMin3"></div>
+                    <div class="clData" id="idData3"></div>
                 </fieldset>
-                <fieldset id="idDia1" class="clDiasFuturos">
-                    <div class="clImagem" id="idImagem4">4</div>
+                <fieldset id="idDia4" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem4"></div>
                     <div class="clWeekDay" id="idWeekDay4"></div>
                     <div class="clTempMax" id="idTempMax4"></div>
                     <div class="clTempMin" id="idTempMin4"></div>
+                    <div class="clData" id="idData4"></div>
                 </fieldset>
-                <fieldset id="idDia1" class="clDiasFuturos">
-                    <div class="clImagem" id="idImagem5">5</div>
+                <fieldset id="idDia5" class="clDiasFuturos">
+                    <div class="clImagem" id="idImagem5"></div>
                     <div class="clWeekDay" id="idWeekDay5"></div>
                     <div class="clTempMax" id="idTempMax5"></div>
                     <div class="clTempMin" id="idTempMin5"></div>
+                    <div class="clData" id="idData5"></div>
                 </fieldset>
                 </div>
         </form>
@@ -312,7 +317,6 @@
             var tempMin4 = document.querySelector("#idTempMin4")
             var tempMin5 = document.querySelector("#idTempMin5")
 
-            var data = document.querySelector("#idData")
             var tempMax1 = document.querySelector("#idTempMax1")
             var tempMax2 = document.querySelector("#idTempMax2")
             var tempMax3 = document.querySelector("#idTempMax3")
@@ -324,6 +328,15 @@
             var humidade = document.querySelector("#idHumidade")
             var vento = document.querySelector("#idVento")
             var clima = document.querySelector("#idClima")
+
+            //datas
+
+            var data = document.querySelector("#idData")
+            var data1 = document.querySelector("#idData1")
+            var data2 = document.querySelector("#idData2")
+            var data3 = document.querySelector("#idData3")
+            var data4 = document.querySelector("#idData4")
+            var data5 = document.querySelector("#idData5")
 
             //WeekDay
 
@@ -346,9 +359,8 @@
                 capital = document.querySelector("#idCapital").value
 
                 let previsão = await previsãoDoTempo(capital)
-                console.log(previsão);
                 
-                //variáveis auxiliares
+                //variável auxiliar
                 let base = previsão.results
 
                 gerarPrevisãoPrincipal(previsão, base)
@@ -397,6 +409,78 @@
                 }
             }
 
+            /**
+            * Rotina de Geração de Previsões do Tempo
+            * Descrição: Gerar a previsão do Tempo para os próximos 5 dias
+            * Parâmetros: previsão, base
+            * Retorno: none
+            */
+
+            function gerarPrevisõesFuturas(previsão, base) {
+                gerarPrevisãoDia1(previsão, base)
+                gerarPrevisãoDia2(previsão, base)
+                gerarPrevisãoDia3(previsão, base)
+                gerarPrevisãoDia4(previsão, base)
+                gerarPrevisãoDia5(previsão, base)
+            }
+
+            function gerarPrevisãoDia1(previsão, base) {
+                let indexador = 0
+
+                weekDay1.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax1.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin1.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                data1.innerHTML = base.forecast[indexador].date
+                imagem1.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia2(previsão, base) {
+                let indexador = 1
+
+                weekDay2.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax2.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin2.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                data2.innerHTML = base.forecast[indexador].date
+                imagem2.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia3(previsão, base) {
+                let indexador = 2
+
+                weekDay3.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax3.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin3.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                data3.innerHTML = base.forecast[indexador].date
+                imagem3.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia4(previsão, base) {
+                let indexador = 3
+
+                weekDay4.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax4.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin4.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                data4.innerHTML = base.forecast[indexador].date
+                imagem4.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+
+            function gerarPrevisãoDia5(previsão, base) {
+                let indexador = 4
+
+                weekDay5.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
+                tempMax5.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
+                tempMin5.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
+                data5.innerHTML = base.forecast[indexador].date
+                imagem5.innerHTML = determinarImagenFuturas(base, indexador)
+            }
+            
+            /**
+            * Rotina de Determina Imagens
+            * Descrição: Identifica qual imagem deve aparecer no campo
+            * Parâmetros: indexador, base
+            * Retorno: imagem correspondente
+            */
+
             function determinarImagenFuturas(base, indexador) {
 
                 if (base.forecast[indexador].condition == "cloud") {
@@ -417,59 +501,6 @@
                 } else if (base.forecast[indexador].condition == "rain") {
                     return chuva
                 }
-            }
-
-            function gerarPrevisõesFuturas(previsão, base) {
-                gerarPrevisãoDia1(previsão, base)
-                gerarPrevisãoDia2(previsão, base)
-                gerarPrevisãoDia3(previsão, base)
-                gerarPrevisãoDia4(previsão, base)
-                gerarPrevisãoDia5(previsão, base)
-            }
-
-            function gerarPrevisãoDia1(previsão, base) {
-                let indexador = 0
-
-                weekDay1.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
-                tempMax1.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
-                tempMin1.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
-                imagem1.innerHTML = determinarImagenFuturas(base, indexador)
-            }
-
-            function gerarPrevisãoDia2(previsão, base) {
-                let indexador = 1
-
-                weekDay2.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
-                tempMax2.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
-                tempMin2.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
-                imagem2.innerHTML = determinarImagenFuturas(base, indexador)
-            }
-
-            function gerarPrevisãoDia3(previsão, base) {
-                let indexador = 2
-
-                weekDay3.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
-                tempMax3.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
-                tempMin3.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
-                imagem3.innerHTML = determinarImagenFuturas(base, indexador)
-            }
-
-            function gerarPrevisãoDia4(previsão, base) {
-                let indexador = 3
-
-                weekDay4.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
-                tempMax4.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
-                tempMin4.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
-                imagem4.innerHTML = determinarImagenFuturas(base, indexador)
-            }
-
-            function gerarPrevisãoDia5(previsão, base) {
-                let indexador = 4
-
-                weekDay5.innerHTML = "WeekDay: " + base.forecast[indexador].weekday
-                tempMax5.innerHTML = "Max: " + base.forecast[indexador].max + " °C"
-                tempMin5.innerHTML = "Min: " + base.forecast[indexador].min + " °C"
-                imagem5.innerHTML = determinarImagenFuturas(base, indexador)
             }
         </script>
     </body>
